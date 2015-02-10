@@ -37,9 +37,24 @@ RUN \
     usermod -s /bin/bash www-data && \
     usermod -m -d /data www-data && \
     gpasswd -a www-data sudo && \
-    echo "www-data ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/www-data && \
+    echo "www-data ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/www-data && \
     mkdir -p /data && \
     chown -R www-data:www-data /data
+RUN \
+    echo "deb http://ftp.jaist.ac.jp/debian/ wheezy main
+    deb-src http://ftp.jaist.ac.jp/debian/ wheezy main
+    
+    deb http://security.debian.org/ wheezy/updates main
+    deb-src http://security.debian.org/ wheezy/updates main
+    
+    # wheezy-updates, previously known as 'volatile'
+    deb http://ftp.jaist.ac.jp/debian/ wheezy-updates main
+    deb-src http://ftp.jaist.ac.jp/debian/ wheezy-updates main
+    
+    deb ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib
+    deb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib
+    
+    deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list
 
 WORKDIR /data
 ENV HOME /data
