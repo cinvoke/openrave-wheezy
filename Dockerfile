@@ -41,20 +41,7 @@ RUN \
     mkdir -p /data && \
     chown -R www-data:www-data /data
 RUN \
-    echo "deb http://ftp.jaist.ac.jp/debian/ wheezy main
-    deb-src http://ftp.jaist.ac.jp/debian/ wheezy main
-    
-    deb http://security.debian.org/ wheezy/updates main
-    deb-src http://security.debian.org/ wheezy/updates main
-    
-    # wheezy-updates, previously known as 'volatile'
-    deb http://ftp.jaist.ac.jp/debian/ wheezy-updates main
-    deb-src http://ftp.jaist.ac.jp/debian/ wheezy-updates main
-    
-    deb ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib
-    deb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib
-    
-    deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list
+    echo "deb http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb http://security.debian.org/ wheezy/updates main\ndeb-src http://security.debian.org/ wheezy/updates main\ndeb http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list
     
 RUN \
     wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - && \
