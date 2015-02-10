@@ -20,6 +20,8 @@ RUn git config --global http.sslVerify false
 # build
 RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file
 
+# insmod
+RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
 #####################
 # Build from sources
 #####################
