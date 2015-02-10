@@ -1,11 +1,11 @@
 FROM debian:wheezy
-MAINTAINER Huan Liu <liuhuanjim013@gmail.com>
+MAINTAINER Clayton Auzenne <cauzenne@mujijn.co.jp>
 
 ##################
 # Debian packages
 ##################
 
-RUN apt-get update
+RUN apt-get update -y
 
 # openrave dependency
 RUN apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev
@@ -21,7 +21,29 @@ RUn git config --global http.sslVerify false
 RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file
 
 # insmod
-RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
+#RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
+
+RUN \
+    apt-get install -y sudo module-init-tools mesa-utils && \
+    apt-get autoclean -y && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN \
+    wget http://us.download.nvidia.com/XFree86/Linux-x86_64/346.35/NVIDIA-Linux-x86_64-346.35.run -O /tmp/nvidia.run && \
+    sh /tmp/nvidia.run -s --no-kernel-module && \
+    rm -f /tmp/nvidia.run
+    
+RUN \
+    usermod -s /bin/bash www-data && \
+    usermod -m -d /data www-data && \
+    gpasswd -a www-data sudo && \
+    echo "www-data ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/www-data && \
+    mkdir -p /data && \
+    chown -R www-data:www-data /data
+
+WORKDIR /data
+ENV HOME /data
+USER www-data
 #####################
 # Build from sources
 #####################
