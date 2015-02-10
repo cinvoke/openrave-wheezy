@@ -55,6 +55,10 @@ RUN \
     deb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib
     
     deb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list
+    
+RUN \
+    wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - && \
+    apt-get update
 
 WORKDIR /data
 ENV HOME /data
