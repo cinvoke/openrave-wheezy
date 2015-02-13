@@ -8,25 +8,25 @@ MAINTAINER Clayton Auzenne <cauzenne@mujijn.co.jp>
 RUN apt-get update -y
 
 # openrave dependency
-#RUN apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev
+RUN apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev
 
 # boost
-#RUN apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev 
+RUN apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev 
 
 # git
 RUN apt-get -y --force-yes --no-install-recommends install git-core sudo
 RUn git config --global http.sslVerify false
 
 # build
-#RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file
+RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file
 
 # insmod
-#RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
+RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
 
-#RUN \
-#    apt-get install -y module-init-tools mesa-utils && \
-#    apt-get autoclean -y && \
-#    rm -rf /var/lib/apt/lists/*
+RUN \
+   apt-get install -y module-init-tools mesa-utils && \
+    apt-get autoclean -y && \
+    rm -rf /var/lib/apt/lists/*
 
 #RUN \
     #wget http://us.download.nvidia.com/XFree86/Linux-x86_64/346.35/NVIDIA-Linux-x86_64-346.35.run -O /tmp/nvidia.run && \
