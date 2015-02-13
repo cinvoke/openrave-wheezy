@@ -14,7 +14,7 @@ RUN apt-get update -y
 #RUN apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev 
 
 # git
-RUN apt-get -y --force-yes --no-install-recommends install git-core
+RUN apt-get -y --force-yes --no-install-recommends install git-core sudo
 RUn git config --global http.sslVerify false
 
 # build
@@ -24,7 +24,7 @@ RUn git config --global http.sslVerify false
 #RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
 
 #RUN \
-#    apt-get install -y sudo module-init-tools mesa-utils && \
+#    apt-get install -y module-init-tools mesa-utils && \
 #    apt-get autoclean -y && \
 #    rm -rf /var/lib/apt/lists/*
 
