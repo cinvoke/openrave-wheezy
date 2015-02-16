@@ -24,7 +24,7 @@ RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2
 RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
 
 RUN \
-   apt-get install -y module-init-tools mesa-utils && \
+   apt-get install -y module-init-tools mesa-utils libode-dev && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
 
