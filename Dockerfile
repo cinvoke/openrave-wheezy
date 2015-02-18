@@ -14,7 +14,7 @@ RUN apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg
 RUN apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev
 
 # git
-RUN apt-get -y --force-yes --no-install-recommends install git-core sudo python-pip
+RUN apt-get -y --force-yes --no-install-recommends install git-core sudo 
 RUn git config --global http.sslVerify false
 
 # build
@@ -59,38 +59,11 @@ ENV BUILD_DIR /data/build
 RUN mkdir -p $SOURCE_DIR
 RUN mkdir -p $BUILD_DIR
 
-# collada-dom
-#ENV COLLADA_DOM_SOURCE_DIR $SOURCE_DIR/collada-dom
-#ENV COLLADA_DOM_BUILD_DIR $BUILD_DIR/collada-dom
-#RUN git clone https://github.com/rdiankov/collada-dom.git $COLLADA_DOM_SOURCE_DIR
-#RUN cd $COLLADA_DOM_SOURCE_DIR && git checkout b67e4e68d302d28454265ee7bd58cc692333a625
-#RUN mkdir -p $COLLADA_DOM_BUILD_DIR
-#RUN cd $COLLADA_DOM_BUILD_DIR && cmake -DCMAKE_BUILD_TYPE=Release -DOPT_DOUBLE_PRECISION=ON $COLLADA_DOM_SOURCE_DIR
-#RUN cd $COLLADA_DOM_BUILD_DIR && make -j4
-#RUN cd $COLLADA_DOM_BUILD_DIR && make install
-
-# libccd
-#ENV LIBCCD_SOURCE_DIR $SOURCE_DIR/libccd
-#ENV LIBCCD_BUILD_DIR $BUILD_DIR/libccd
-#RUN git clone https://github.com/danfis/libccd.git $LIBCCD_SOURCE_DIR
-#RUN cd $LIBCCD_SOURCE_DIR && git checkout 2ddebf8917da5812306f74520d871ac8d8c1871e
-#RUN mkdir -p $LIBCCD_BUILD_DIR
-#RUN cd $LIBCCD_BUILD_DIR && cmake -DCMAKE_BUILD_TYPE=Release $LIBCCD_SOURCE_DIR
-#RUN cd $LIBCCD_BUILD_DIR && make -j4
-#RUN cd $LIBCCD_BUILD_DIR && make install
-
-# openrave
-#ENV OPENRAVE_SOURCE_DIR $SOURCE_DIR/openrave
-#ENV OPENRAVE_BUILD_DIR $BUILD_DIR/openrave
-#RUN git clone https://github.com/rdiankov/openrave.git $OPENRAVE_SOURCE_DIR
-#RUN cd $OPENRAVE_SOURCE_DIR && git fetch origin && git checkout 15e5c7c63f2f45603d2ab647027310f508d66b70
-#RUN mkdir -p $OPENRAVE_BUILD_DIR
-#RUN cd $OPENRAVE_BUILD_DIR && cmake -DCMAKE_BUILD_TYPE=Release -DODE_USE_MULTITHREAD=ON -DOPT_IKFAST_FLOAT32=OFF $OPENRAVE_SOURCE_DIR
-#RUN cd $OPENRAVE_BUILD_DIR && make -j4
-#RUN cd $OPENRAVE_BUILD_DIR && make install -j4
 
 ##########
 # Run-time
 ##########
-#RUN apt-get -y --force-yes --no-install-recommends install ipython python-scipy
+#RUN apt-get -y --force-yes --no-install-recommends install ipython python-scipy python-pip
+#RUN pip install nose coverage
+#RUN apt-get -y --force-yes --no-install-recommends install tree vim libassimp-dev less build-essential ca-certificates python-pip
 
