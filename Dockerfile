@@ -14,7 +14,7 @@ RUN apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg
 RUN apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev
 
 # git
-RUN apt-get -y --force-yes --no-install-recommends install git-core sudo
+RUN apt-get -y --force-yes --no-install-recommends install git-core sudo python-pip
 RUn git config --global http.sslVerify false
 
 # build
