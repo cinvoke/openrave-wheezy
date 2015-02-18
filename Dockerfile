@@ -21,7 +21,7 @@ RUn git config --global http.sslVerify false
 RUN apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file
 
 # insmod
-RUN apt-get -y --force-yes --no-install-recommends install module-init-tools
+RUN apt-get -y --force-yes --no-install-recommends install module-init-tools tree vim libassimp-dev less build-essential 
 
 RUN \
    apt-get install -y module-init-tools mesa-utils libode-dev && \
