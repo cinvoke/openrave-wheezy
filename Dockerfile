@@ -7,16 +7,11 @@ MAINTAINER Clayton Auzenne <cauzenne@mujijn.co.jp>
 
 RUN \
  apt-get update -y \
-# openrave dependency
 apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev \
-# boost \
 apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev \
-# git \
 apt-get -y --force-yes --no-install-recommends install git-core sudo  \
 git config --global http.sslVerify false \
-# build \
 apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file \
-# insmod \
 apt-get -y --force-yes --no-install-recommends install module-init-tools tree vim libassimp-dev less build-essential \
 apt-get install -y module-init-tools mesa-utils libode-dev && \
 apt-get autoclean -y && \
