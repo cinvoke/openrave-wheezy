@@ -20,21 +20,19 @@ apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 fil
 apt-get -y --force-yes --no-install-recommends install module-init-tools tree vim libassimp-dev less build-essential \
 apt-get install -y module-init-tools mesa-utils libode-dev && \
 apt-get autoclean -y && \
-rm -rf /var/lib/apt/lists/*
+rm -rf /var/lib/apt/lists/* \
+usermod -s /bin/bash www-data  \
+usermod -m -d /data www-data  \
+gpasswd -a www-data sudo  \
+echo "www-data ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/www-data  \
+mkdir -p /data  \
+chown -R www-data:www-data /data \
+echo "deb http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb http://security.debian.org/ wheezy/updates main\ndeb-src http://security.debian.org/ wheezy/updates main\ndeb http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list 
 
 #RUN \
     #wget http://us.download.nvidia.com/XFree86/Linux-x86_64/346.35/NVIDIA-Linux-x86_64-346.35.run -O /tmp/nvidia.run && \
     #sh /tmp/nvidia.run -s --no-kernel-module && \
     #rm -f /tmp/nvidia.run
-
-RUN \
-    usermod -s /bin/bash www-data  \
-    usermod -m -d /data www-data  \
-    gpasswd -a www-data sudo  \
-    echo "www-data ALL=(ALL:ALL) NOPASSWD: ALL" >> /etc/sudoers.d/www-data  \
-    mkdir -p /data  \
-    chown -R www-data:www-data /data
-    echo "deb http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy main\ndeb http://security.debian.org/ wheezy/updates main\ndeb-src http://security.debian.org/ wheezy/updates main\ndeb http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb-src http://ftp.jaist.ac.jp/debian/ wheezy-updates main\ndeb ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb-src ftp://ftp.jaist.ac.jp/pub/Linux/debian/ wheezy-backports main non-free contrib\ndeb http://apt.postgresql.org/pub/repos/apt/ wheezy-pgdg main" > /etc/apt/sources.list 
 
 #RUN \
 #    wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add - && \
