@@ -10,7 +10,7 @@ RUN \
 apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev \
 apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev \
 apt-get -y --force-yes --no-install-recommends install git-core sudo  \
-git config --global http.sslVerify false \
+#git config --global http.sslVerify false \
 apt-get -y --force-yes --no-install-recommends install cmake make wget bzip2 file \
 apt-get -y --force-yes --no-install-recommends install module-init-tools tree vim libassimp-dev less build-essential \
 apt-get install -y module-init-tools mesa-utils libode-dev && \
@@ -50,8 +50,8 @@ mkdir -p $BUILD_DIR \
 apt-get -y --force-yes --no-install-recommends install ipython python-scipy python-pip \
 pip install nose coverage \
 apt-get -y --force-yes --no-install-recommends install tree vim libassimp-dev less build-essential ca-certificates python-pip \
-git config --global http.sslVerify false \
-git clone https://github.com/rdiankov/collada-dom.git $COLLADA_DOM_SOURCE_DIR && \
+#git config --global http.sslVerify false \
+env GIT_SSL_NO_VERIFY=true git clone https://github.com/rdiankov/collada-dom.git $COLLADA_DOM_SOURCE_DIR && \
   mkdir -p $COLLADA_DOM_BUILD_DIR && \
   cd $COLLADA_DOM_BUILD_DIR && cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release -DOPT_DOUBLE_PRECISION=ON $COLLADA_DOM_SOURCE_DIR && \
   cd $COLLADA_DOM_BUILD_DIR && make -j4  && \
