@@ -39,6 +39,8 @@ ENV SOURCE_DIR /data/src
 ENV BUILD_DIR /data/build
 ENV COLLADA_DOM_SOURCE_DIR ${SOURCE_DIR}/collada-dom
 ENV COLLADA_DOM_BUILD_DIR ${BUILD_DIR}/collada-dom
+ENV LIBCCD_SOURCE_DIR $SOURCE_DIR/libccd
+ENV LIBCCD_BUILD_DIR $BUILD_DIR/libccd
 USER www-data
 
 ##########
@@ -56,5 +58,12 @@ env GIT_SSL_NO_VERIFY=true git clone https://github.com/rdiankov/collada-dom.git
   cd $COLLADA_DOM_BUILD_DIR && cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release -DOPT_DOUBLE_PRECISION=ON $COLLADA_DOM_SOURCE_DIR && \
   cd $COLLADA_DOM_BUILD_DIR && make -j4  && \
   cd $COLLADA_DOM_BUILD_DIR && make install
+
+env GIT_SSL_NO_VERIFY=true git clone https://github.com/danfis/libccd.git $LIBCCD_SOURCE_DIR && \
+  mkdir -p $LIBCCD_BUILD_DIR && \
+  cd $LIBCCD_BUILD_DIR && cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DCMAKE_BUILD_TYPE=Release $LIBCCD_SOURCE_DIR && \
+  cd $LIBCCD_BUILD_DIR && make -j4 && \
+  cd $LIBCCD_BUILD_DIR && make install
+
 
 VOLUME ${INSTALL_DIR}
