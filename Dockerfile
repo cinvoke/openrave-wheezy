@@ -6,7 +6,7 @@ MAINTAINER Clayton Auzenne <cauzenne@mujijn.co.jp>
 ##################
 
 RUN \
- apt-get update -y \
+ apt-get update \
 apt-get -y --force-yes --no-install-recommends install liblapack-dev libjpeg8-dev libogg-dev libpng12-dev libqhull-dev libqrupdate1 libqt4-scripttools libsimage-dev  qt4-dev-tools libhdf5-serial-dev python-h5py libpcre++-dev python-matplotlib libsoqt4-dev python-empy libxml2-dev \
 apt-get -y --force-yes --no-install-recommends install libboost-dev libboost-python-dev libboost-filesystem-dev libboost-iostreams-dev libboost-math-dev libboost-program-options-dev libboost-regex-dev libboost-random-dev libboost-serialization-dev libboost-signals-dev libboost-thread-dev libboost-wave-dev \
 apt-get -y --force-yes --no-install-recommends install git-core sudo  \
