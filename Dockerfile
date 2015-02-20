@@ -49,8 +49,9 @@ ENV LIBCCD_BUILD_DIR $BUILD_DIR/libccd
 RUN \
 mkdir -p $SOURCE_DIR; \
 mkdir -p $BUILD_DIR; \
-apt-get -y --force-yes --no-install-recommends install ipython python-scipy python-pip; \
-pip install nose coverage; \
+sudo apt-get update;
+sudo apt-get -y --force-yes --no-install-recommends install ipython python-scipy python-pip; \
+sudo pip install nose coverage; \
 apt-get -y --force-yes --no-install-recommends install tree vim libassimp-dev less build-essential ca-certificates python-pip; \
 git config --global http.sslVerify false; \
 git clone https://github.com/rdiankov/collada-dom.git $COLLADA_DOM_SOURCE_DIR; \
